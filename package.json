@@ -1,0 +1,25 @@
+{
+  "name": "friend-finder-node-express-mysql",
+  "version": "1.0.0",
+  "description": "compatibility-based \"FriendFinder\" application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dointhedev/Friend-Finder-Node-Express-Mysql.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mysql",
+    "express"
+  ],
+  "author": "Avi Davis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dointhedev/Friend-Finder-Node-Express-Mysql/issues"
+  },
+  "homepage": "https://github.com/dointhedev/Friend-Finder-Node-Express-Mysql#readme"
+}
