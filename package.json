@@ -21,5 +21,13 @@
   "bugs": {
     "url": "https://github.com/dointhedev/Friend-Finder-Node-Express-Mysql/issues"
   },
-  "homepage": "https://github.com/dointhedev/Friend-Finder-Node-Express-Mysql#readme"
+  "homepage": "https://github.com/dointhedev/Friend-Finder-Node-Express-Mysql#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.4"
+  }
 }
