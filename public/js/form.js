@@ -1,6 +1,5 @@
 $(document).ready(function () {
   // Capture the form inputs
-  findMatch();
   $("#submit").on("click", function(event) {
     event.preventDefault();
 
@@ -46,7 +45,8 @@ $(document).ready(function () {
       // AJAX post the data to the friends API.
       $.post("/api/friends", matches, function(data) {
       // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-      alert(`post was added: ${data}`) 
+      alert(`post was added: ${data}`);
+      findMatch();
     });
   } else {
       alert("Please fill out all fields before submitting!");
@@ -54,29 +54,30 @@ $(document).ready(function () {
   });
 
   function findMatch(){
-    alert('in findmatch');
     $.get("/api/friends", function(data) {
             // test to see if data gets received. 
            alert(`data Test ${JSON.stringify(data)}`);
           //const d = JSON.stringify(data);
         for (let i = 0; i < data.length; i++) {
           let e = data[i];
+          let nArr = e.scores;
+          let sum = nArr.reduce(add, 0);
+          function add(a, b) {
+          return a + b;
+         }
           //let scr = e.scores;
+          alert(`score sum test ${sum}`);
+          alert(`data.name Test ${e.name}`);
           alert(`data.name Test ${e.name}`);
           alert(`data.photo Test ${e.photo}`);
-          $("#match-name").text(e.name);
-          $("#match-img").attr("src", e.photo);
-
-        // for (let s = 0; s < scr.length; s++) { 
-        //   let sc =+ scr[s];
-        //   alert(`getting this to calculate I ran out of time ${sc}`);
         // }
         }
+        $("#match-name").text(e.name);
+        $("#match-img").attr("src", e.photo);
         $("#results-modal").modal("toggle");
            // Show the modal with the best match
        
     });
   }
-  
 });
 

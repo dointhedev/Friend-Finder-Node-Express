@@ -1,4 +1,3 @@
-   console.log("in friends.js");
     var matches = [
     {
     name: "John Doe 1",
