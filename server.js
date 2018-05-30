@@ -9,7 +9,7 @@ const PATH = require("path");
 const APP = EXPRESS();
 
 // Sets an initial port. We"ll use this later in our listener
-const PORT = process.env.PORT || 8185;
+const PORT = process.env.PORT || 8194;
 APP.use(EXPRESS.static(PATH.join(__dirname, 'public')));
 // Sets up the Express APP to handle data parsing
 APP.use(BODYPARSER.urlencoded({ extended: true }));

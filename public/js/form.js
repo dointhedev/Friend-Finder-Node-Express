@@ -2,6 +2,7 @@ $(document).ready(function () {
   // Capture the form inputs
   let urSum = 0;
   let sum = 0;
+  let name = '';
 
   $("#submit").on("click", function (event) {
     event.preventDefault();
@@ -49,14 +50,13 @@ $(document).ready(function () {
       function add(a, b) {
         return a + b;
       }
-
-      console.log(nmArr);
-      console.log(scores);
-      console.log(urSum);
-  
+      name = $("#name").val();
+      // console.log(nmArr);
+      // console.log(scores);
+      // console.log(urSum);
       // Create an object for the user"s data
       let matches = {
-        name: $("#name").val(),
+        name: name,
         photo: $("#photo").val(),
         scores: scores
       };
@@ -75,23 +75,28 @@ $(document).ready(function () {
   function findMatch() {
     $.get("/api/friends", function (data) {
       // test to see if data gets received. 
-      alert(`data Test ${JSON.stringify(data)}`);
-      alert(`Your Sum ${urSum}`);
+      //alert(`data Test ${JSON.stringify(data)}`);
       //const d = JSON.stringify(data);
       for (let i = 0; i < data.length; i++) {
         let e = data[i];
         let nArr = e.scores;
-        sum = nArr.reduce(add, 0);
-
+        let numArr = [];
+        nArr.forEach(e => {
+          numArr.push(parseInt(e));
+        });
+        sum = numArr.reduce(add, 0);
         function add(a, b) {
           return a + b;
         }
-        if (urSum <= sum) {
+        //alert(`New Array ${JSON.stringify(numArr)}`);
+        console.log(`Your Sum ${urSum}`);
+        console.log(`A partners Sum ${sum}`);
+        if ((urSum >= sum) && ( e.name !== name )) {
           $("#match-name").text(e.name);
           $("#match-img").attr("src", e.photo);
           $("#results-modal").modal("toggle");
         } else {
-          alert('No matches found')
+          console.log('No matches found')
         }
         //let scr = e.scores;
         // alert(`data.name Test ${e.name}`);
