@@ -6,10 +6,10 @@ const PATH = require("path");
 
 //:::::::::::: EXPRESS CONFIGURATION :::::::::
 // Tells node that we are creating an "express" server
-var APP = EXPRESS();
+const APP = EXPRESS();
 
 // Sets an initial port. We"ll use this later in our listener
-var PORT = process.env.PORT || 8182;
+const PORT = process.env.PORT || 8185;
 APP.use(EXPRESS.static(PATH.join(__dirname, 'public')));
 // Sets up the Express APP to handle data parsing
 APP.use(BODYPARSER.urlencoded({ extended: true }));
